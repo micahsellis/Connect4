@@ -1,5 +1,6 @@
 ![coded by Micah Ellis](https://i.imgur.com/fz9RMAY.gif)
-#CONNECT 4
+
+# CONNECT 4
 
 ### Pseudocode:
 
