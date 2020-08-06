@@ -2,6 +2,9 @@
 
 # CONNECT 4
 
+### Wireframe:
+![wireframe](https://i.imgur.com/9MbRlZb.jpg)
+
 ### Pseudocode:
 
 ```
