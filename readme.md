@@ -1,3 +1,5 @@
+[Micah](https://i.imgur.com/fz9RMAY.gif)
+
 ### Pseudocode:
 
 ```
