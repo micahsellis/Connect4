@@ -3,7 +3,7 @@
 # CONNECT 4
 
 ### Wireframe:
-![wireframe](https://i.imgur.com/9MbRlZb.jpg)
+![wireframe](https://i.imgur.com/9MbRlZb.jpg?1)
 
 ### Pseudocode:
 
