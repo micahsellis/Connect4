@@ -1,4 +1,4 @@
-[Micah](https://i.imgur.com/fz9RMAY.gif)
+![coded by Micah Ellis](https://i.imgur.com/fz9RMAY.gif)
 
 ### Pseudocode:
 
