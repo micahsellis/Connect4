@@ -47,8 +47,8 @@ body {
 }
 .btn{
     display: flex;
-    justify-content: center;
-    width: 800px;
+    justify-items: center;
+    background-color: white;
 }
 .button {
   display: flex;
@@ -85,4 +85,12 @@ body {
 }
 .button:hover .o2 {
   stroke-dashoffset: -420;
+}
+#coded {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 75px;
+    width: 150px;
+    z-index: -1;
 }

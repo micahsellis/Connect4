@@ -74,11 +74,15 @@ function handleColumn5Click() {
 function handleColumn6Click() {
     console.log('Column 6');
 };
+function isGameOver() {
+    console.log('game still in play');
+}
 function render() {
     console.log('render');
 };
 function eraseBoard() {
     console.log('reset');
+    init();
 };
         
 init();
