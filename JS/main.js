@@ -1,9 +1,9 @@
 /*----- constants -----*/
 const PLAYER = {
-    p1: 1,
-    p1color: 'rgba(192,22,67,1)',
-    p2: -1,
-    p2color: 'rgba(38,166,173,1)'
+  p1: 1,
+  p1color: 'rgba(192,22,67,1)',
+  p2: -1,
+  p2color: 'rgba(92,225,230,1)',
 };
 
 

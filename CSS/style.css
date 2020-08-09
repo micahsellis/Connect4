@@ -10,6 +10,9 @@ body {
   align-content: ;
   margin: 0 100px 0 100px;
 }
+#header h2 {
+  color: rgb(92, 225, 230)
+}
 #grid {
   display: grid;
   grid-template-columns: repeat(7, 100px);
@@ -41,9 +44,9 @@ body {
 #grid > div:hover,
 #grid > div:focus,
 #grid > div:active {
-  box-shadow: 0 0 50px 20px rgba(192, 26, 67, 0.9), inset 0 0 30px 5px #fff,
+  box-shadow: 0 0 50px 20px rgba(255, 0, 91, 0.9), inset 0 0 30px 5px #fff,
     0 0 10px #fff;
-  background-color: rgba(192, 26, 67, 1);
+  background-color: rgba(255, 0, 91, 1);
 }
 .btn{
     display: flex;
@@ -64,12 +67,12 @@ body {
   stroke-width: 5;
 }
 .button svg .o1 {
-  stroke: rgba(255, 65, 65, 0.7);
-  fill: #ff1414;
+  stroke: rgba(255, 0, 91, 0.7);
+  fill: rgba(255, 0, 91, 1));
   transition: all 1s ease-in-out;
 }
 .button svg .o2 {
-  stroke: white;
+  stroke: #5ce1e6;
   stroke-dasharray: 20 420;
   stroke-dashoffset: 20;
   transition: all 1s ease-in-out;
@@ -81,7 +84,7 @@ body {
   letter-spacing: 3px;
 }
 .button:hover .o1 {
-  fill: rgba(204, 16, 16, 0.3);
+  fill: rgba(255, 0, 91, 0.3);
 }
 .button:hover .o2 {
   stroke-dashoffset: -420;
