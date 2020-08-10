@@ -18,18 +18,7 @@ body {
 #header h2 {
   color: rgba(255, 0, 115, 1);
   align-self: center;
-  -webkit-text-stroke: 01px black;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
-}
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
-  }
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
-  }
+  text-shadow: 1px 1px 2px black, 0 0 20px rgba(92, 255, 230, 0.6), 0 0 20px rgba(92, 255, 240, 0.5), 0 0 20px rgba(92, 255, 255, 0.7);
 }
 #grid {
   display: grid;
