@@ -1,11 +1,11 @@
 /*----- constants -----*/
 const PLAYER = {
   p1: 1,
-  p1Color: 'rgba(255,0,91,1)',
-  p1Glow: '0 0 10px 5px rgba(255,0,91,0.8)',
+  p1Color: 'rgba(255,0,115,1)',
+  p1Glow: '0 0 10px 5px rgba(255,0,115,0.8)',
   p2: -1,
   p2Color: 'rgba(92,225,230,1)',
-  p2Glow: 'rgba(92,255,230,1)',
+  p2Glow: '0 0 10px 5px rgba(92,255,230,0.8)',
 };
 
 /*----- app's state (variables) -----*/
@@ -16,37 +16,13 @@ let winner;
 /*----- cached element references -----*/
 const playerTurnEl = document.getElementById('playerTurn');
 const allColumnEls = document.querySelectorAll(
-  '.circle0, .circle1, .circle2, .circle3, .circle4, .circle5, .circle6'
+  '.c0, .c1, .c2, .c3, .c4, .c5, .c6'
 );
-const column0Els = document.querySelectorAll('.c0');
-const column1Els = document.querySelectorAll('.c1');
-const column2Els = document.querySelectorAll('.c2');
-const column3Els = document.querySelectorAll('.c3');
-const column4Els = document.querySelectorAll('.c4');
-const column5Els = document.querySelectorAll('.c5');
-const column6Els = document.querySelectorAll('.c6');
-const gaemStateEl = document.getElementById('gameState');
+const gameStateEl = document.getElementById('gameState');
+const playerEl = document.getElementById('player-turn');
 
 /*----- event listeners -----*/
-for (i of column0Els) {
-  i.addEventListener('click', handleClick);
-}
-for (i of column1Els) {
-  i.addEventListener('click', handleClick);
-}
-for (i of column2Els) {
-  i.addEventListener('click', handleClick);
-}
-for (i of column3Els) {
-  i.addEventListener('click', handleClick);
-}
-for (i of column4Els) {
-  i.addEventListener('click', handleClick);
-}
-for (i of column5Els) {
-  i.addEventListener('click', handleClick);
-}
-for (i of column6Els) {
+for (i of allColumnEls) {
   i.addEventListener('click', handleClick);
 }
 document.getElementById('resetbtn').addEventListener('click', eraseBoard);
@@ -64,7 +40,7 @@ function init() {
   };
   turn = 1;
   winner = null;
-  gaemStateEl.textContent = 'MAKE YOUR MOVE!';
+  gameStateEl.textContent = 'MAKE YOUR MOVE!';
   render();
 }
 function handleClick(evt) {
@@ -79,9 +55,17 @@ function handleClick(evt) {
   if (turn === 1) {
     player1Go(playerColumn, idx);
   }
+    winner = isGameOver();
+    turn *= -1;
+    render(turn);
 }
 function player2Go(playerColumn, idx) {
-  console.log('P2!');
+  let columnNum = playerColumn.substr(1);
+  let id = `${idx},${columnNum}`;
+  let clicked = document.getElementById(id);
+  clicked.style.backgroundColor = PLAYER.p2Color;
+  clicked.style.boxShadow = PLAYER.p2Glow;
+  clicked.removeEventListener('click', handleClick);
 }
 function player1Go(playerColumn, idx) {
   let columnNum = playerColumn.substr(1);
@@ -92,10 +76,28 @@ function player1Go(playerColumn, idx) {
   clicked.removeEventListener('click', handleClick);
 }
 function isGameOver() {
-  console.log('game still in play');
+    console.log('game still in play');
+    return null;
 }
-function render() {
-  console.log('render');
+function render(turn) {
+    if (winner === null) {
+        if (turn === 1) {
+            playerEl.src = "imgs/Player1.png";
+            gameStateEl.style.color = PLAYER.p1Color;
+        } else if (turn === -1) {
+            playerEl.src = "imgs/Player2.png";
+            gameStateEl.style.color = PLAYER.p2Color;
+      }
+    } else if (winner === 'T') {
+        gameStateEl.textContent = "IT'S A TIE!"
+        gameStateEl.style.color = "black";
+    } else if (winner === 1) {
+        gameStateEl.textContent = "PLAYER 1 WINS!"
+        gameStateEl.style.color = PLAYER.p1Color
+    } else if (winner === -1) {
+        gameStateEl.textContent = "PLAYER 2 WINS!"
+        gameStateEl.style.color = PLAYER.p2Color
+  }
 }
 function eraseBoard() {
   console.log('reset');
