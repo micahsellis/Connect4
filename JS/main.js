@@ -47,6 +47,7 @@ function init() {
   gameStateEl.textContent = 'MAKE YOUR MOVE!';
   render();
 }
+
 function handleClick(evt) {
   const playerRow = parseInt(evt.target.id);
   const playerColumn = evt.target.className;
@@ -63,6 +64,7 @@ function handleClick(evt) {
   turn *= -1;
   render(turn);
 }
+
 function player2Go(playerColumn, idx) {
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
@@ -71,6 +73,7 @@ function player2Go(playerColumn, idx) {
   clicked.style.boxShadow = PLAYER.p2Glow;
   clicked.removeEventListener('click', handleClick);
 }
+
 function player1Go(playerColumn, idx) {
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
@@ -79,10 +82,52 @@ function player1Go(playerColumn, idx) {
   clicked.style.boxShadow = PLAYER.p1Glow;
   clicked.removeEventListener('click', handleClick);
 }
+
 function isGameOver() {
-  console.log('game still in play');
-  return null;
+  for (i = 0; i < 3; i++) {
+    console.log(board.c${i}[i]);
+  }
 }
+// function chkWinner(board) {
+//   // Check down
+//   for (r = 0; r < 3; r++)
+//     Object.entries(board).forEach(([key, value]) => {
+//       if chkLine(key )
+//     })
+//     for (c = 0; c < 7; c++)
+//       if (chkLine(board., bd[r + 1][c], bd[r + 2][c], bd[r + 3][c]))
+//         return bd[r][c];
+// Object.entries(animals).forEach(([key, value]) => {
+//     console.log(`${key}: ${value}`)
+// });
+//   // Check right
+//   for (r = 0; r < 6; r++)
+//     for (c = 0; c < 4; c++)
+//       if (chkLine(bd[r][c], bd[r][c + 1], bd[r][c + 2], bd[r][c + 3]))
+//         return bd[r][c];
+
+//   // Check down-right
+//   for (r = 0; r < 3; r++)
+//     for (c = 0; c < 4; c++)
+//       if (
+//         chkLine(bd[r][c], bd[r + 1][c + 1], bd[r + 2][c + 2], bd[r + 3][c + 3])
+//       )
+//         return bd[r][c];
+
+//   // Check down-left
+//   for (r = 3; r < 6; r++)
+//     for (c = 0; c < 4; c++)
+//       if (
+//         chkLine(bd[r][c], bd[r - 1][c + 1], bd[r - 2][c + 2], bd[r - 3][c + 3])
+//       )
+//         return bd[r][c];
+
+//   return 0;
+// }
+//   console.log('game still in play');
+//   return null;
+// }
+
 function render(turn) {
   if (winner === null) {
     if (turn === 1) {
@@ -108,6 +153,7 @@ function render(turn) {
     gameStateEl.style.textShadow = PLAYER.p2TxtShd;
   }
 }
+
 function eraseBoard() {
   console.log('reset');
   init();
