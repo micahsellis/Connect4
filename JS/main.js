@@ -84,10 +84,20 @@ function player1Go(playerColumn, idx) {
 }
 
 function isGameOver() {
-  for (i = 0; i < 3; i++) {
-    console.log(board.c${i}[i]);
+  Object.keys(board).forEach(([key]) => {
+    for (i = 0; i < 5; i++) {
+      if (board[key][i] === -1) {
+        console.log(board[key][i])
+    }
   }
-}
+})
+
+  // if (board.c0[0] === board.c0[1] )
+  //check Verticle
+//   for (i = 0; i < 3; i++) {
+//     Object.keys()
+//   }
+// }
 // function chkWinner(board) {
 //   // Check down
 //   for (r = 0; r < 3; r++)
@@ -100,6 +110,8 @@ function isGameOver() {
 // Object.entries(animals).forEach(([key, value]) => {
 //     console.log(`${key}: ${value}`)
 // });
+
+// Object.entries & Object.keys
 //   // Check right
 //   for (r = 0; r < 6; r++)
 //     for (c = 0; c < 4; c++)
@@ -124,9 +136,9 @@ function isGameOver() {
 
 //   return 0;
 // }
-//   console.log('game still in play');
-//   return null;
-// }
+  // console.log(board);
+  return null;
+}
 
 function render(turn) {
   if (winner === null) {
