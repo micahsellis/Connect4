@@ -93,6 +93,7 @@ function isGameOver() {
         board[key][i + 3] === 1
       ) {
         winner = board[key][i];
+        gameIsOver();
         return winner;
       } else if (
         board[key][i] === -1 &&
@@ -101,6 +102,7 @@ function isGameOver() {
         board[key][i + 3] === -1
       ) {
         winner = board[key][i];
+        gameIsOver();
         return winner;
       }
     }
@@ -108,8 +110,8 @@ function isGameOver() {
   // convert board object's values to arrays
   let boardArr = Object.values(board);
   // check rows
-  for (c = 0; c < 5; c++) {
-    for (r = 0; r < 7; r++) {
+  for (c = 0; c < 4; c++) {
+    for (r = 0; r < 6; r++) {
       if (
         boardArr[c][r] === 1 &&
         boardArr[c + 1][r] === 1 &&
@@ -117,6 +119,7 @@ function isGameOver() {
         boardArr[c + 3][r] === 1
       ) {
         winner = boardArr[c][r];
+        gameIsOver();
         return winner;
       } else if (
         boardArr[c][r] === -1 &&
@@ -125,6 +128,7 @@ function isGameOver() {
         boardArr[c + 3][r] === -1
       ) {
         winner = boardArr[c][r];
+        gameIsOver();
         return winner;
       }
     }
@@ -139,6 +143,7 @@ function isGameOver() {
         boardArr[c + 3][r + 3] === 1
       ) {
         winner = boardArr[c][r];
+        gameIsOver();
         return winner;
       } else if (
         boardArr[c][r] === -1 &&
@@ -147,6 +152,7 @@ function isGameOver() {
         boardArr[c + 3][r + 3] === -1
       ) {
         winner = boardArr[c][r];
+        gameIsOver();
         return winner;
       }
     }
@@ -161,6 +167,7 @@ function isGameOver() {
         boardArr[c + 3][r - 3] === 1
       ) {
         winner = boardArr[c][r];
+        gameIsOver();
         return winner;
       } else if (
         boardArr[c][r] === -1 &&
@@ -169,6 +176,7 @@ function isGameOver() {
         boardArr[c + 3][r - 3] === -1
       ) {
         winner = boardArr[c][r];
+        gameIsOver();
         return winner;
       }
     }
@@ -202,8 +210,16 @@ function render(turn) {
   }
 }
 
+function gameIsOver() {
+  for (i of allColumnEls) {
+    i.removeEventListener('click', handleClick);
+  }
+}
 function eraseBoard() {
-  console.log('reset');
+  for (i of allColumnEls) {
+    i.style.backgroundColor = 'white'
+    i.style.boxShadow = null
+  }
   init();
 }
 
