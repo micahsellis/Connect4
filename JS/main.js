@@ -85,21 +85,21 @@ function player1Go(playerColumn, idx) {
 function isGameOver() {
   // check columns
   Object.entries(board).forEach(([key, value]) => {
-    for (i = 0; i < 4; i++) {
+    for (row = 0; row < 4; row++) {
       if (
-        board[key][i] === 1 &&
-        board[key][i + 1] === 1 &&
-        board[key][i + 2] === 1 &&
-        board[key][i + 3] === 1
+        board[key][row] === 1 &&
+        board[key][row + 1] === 1 &&
+        board[key][row + 2] === 1 &&
+        board[key][row + 3] === 1
       ) {
         winner = board[key][i];
         gameIsOver();
         return winner;
       } else if (
-        board[key][i] === -1 &&
-        board[key][i + 1] === -1 &&
-        board[key][i + 2] === -1 &&
-        board[key][i + 3] === -1
+        board[key][row] === -1 &&
+        board[key][row + 1] === -1 &&
+        board[key][row + 2] === -1 &&
+        board[key][row + 3] === -1
       ) {
         winner = board[key][i];
         gameIsOver();
@@ -110,72 +110,72 @@ function isGameOver() {
   // convert board object's values to arrays
   let boardArr = Object.values(board);
   // check rows
-  for (c = 0; c < 4; c++) {
-    for (r = 0; r < 6; r++) {
+  for (col = 0; col < 4; col++) {
+    for (row = 0; row < 6; row++) {
       if (
-        boardArr[c][r] === 1 &&
-        boardArr[c + 1][r] === 1 &&
-        boardArr[c + 2][r] === 1 &&
-        boardArr[c + 3][r] === 1
+        boardArr[col][row] === 1 &&
+        boardArr[col + 1][row] === 1 &&
+        boardArr[col + 2][row] === 1 &&
+        boardArr[col + 3][row] === 1
       ) {
-        winner = boardArr[c][r];
+        winner = boardArr[col][row];
         gameIsOver();
         return winner;
       } else if (
-        boardArr[c][r] === -1 &&
-        boardArr[c + 1][r] === -1 &&
-        boardArr[c + 2][r] === -1 &&
-        boardArr[c + 3][r] === -1
+        boardArr[col][row] === -1 &&
+        boardArr[col + 1][row] === -1 &&
+        boardArr[col + 2][row] === -1 &&
+        boardArr[col + 3][row] === -1
       ) {
-        winner = boardArr[c][r];
+        winner = boardArr[col][row];
         gameIsOver();
         return winner;
       }
     }
   }
   // check diagonal right
-  for (c = 0; c < 4; c++) {
-    for (r = 0; r < 3; r++) {
+  for (col = 0; col < 4; col++) {
+    for (row = 0; row < 3; row++) {
       if (
-        boardArr[c][r] === 1 &&
-        boardArr[c + 1][r + 1] === 1 &&
-        boardArr[c + 2][r + 2] === 1 &&
-        boardArr[c + 3][r + 3] === 1
+        boardArr[col][row] === 1 &&
+        boardArr[col + 1][row + 1] === 1 &&
+        boardArr[col + 2][row + 2] === 1 &&
+        boardArr[col + 3][row + 3] === 1
       ) {
-        winner = boardArr[c][r];
+        winner = boardArr[col][row];
         gameIsOver();
         return winner;
       } else if (
-        boardArr[c][r] === -1 &&
-        boardArr[c + 1][r + 1] === -1 &&
-        boardArr[c + 2][r + 2] === -1 &&
-        boardArr[c + 3][r + 3] === -1
+        boardArr[col][row] === -1 &&
+        boardArr[col + 1][row + 1] === -1 &&
+        boardArr[col + 2][row + 2] === -1 &&
+        boardArr[col + 3][row + 3] === -1
       ) {
-        winner = boardArr[c][r];
+        winner = boardArr[col][row];
         gameIsOver();
         return winner;
       }
     }
   }
   // check diagonal left
-  for (c = 0; c < 4; c++) {
-    for (r = 3; r < 6; r++) {
+  for (col = 0; col < 4; col++) {
+    for (row = 3; row < 6; row++) {
       if (
-        boardArr[c][r] === 1 &&
-        boardArr[c + 1][r - 1] === 1 &&
-        boardArr[c + 2][r - 2] === 1 &&
-        boardArr[c + 3][r - 3] === 1
+        boardArr[col][row] === 1 &&
+        boardArr[col + 1][row - 1] === 1 &&
+        boardArr[col + 2][row - 2] === 1 &&
+        boardArr[col + 3][row - 3] === 1
       ) {
-        winner = boardArr[c][r];
+        winner = boardArr[col][row];
         gameIsOver();
         return winner;
       } else if (
-        boardArr[c][r] === -1 &&
-        boardArr[c + 1][r - 1] === -1 &&
-        boardArr[c + 2][r - 2] === -1 &&
-        boardArr[c + 3][r - 3] === -1
+        boardArr[col][row] === -1 &&
+        boardArr[col + 1][row - 1] === -1 &&
+        boardArr[col + 2][row - 2] === -1 &&
+        boardArr[col + 3][row - 3] === -1
       ) {
-        winner = boardArr[c][r];
+        winner = boardArr[col][row];
         gameIsOver();
         return winner;
       }
@@ -217,7 +217,7 @@ function gameIsOver() {
 }
 function eraseBoard() {
   for (i of allColumnEls) {
-    i.style.backgroundColor = 'white'
+    i.style.backgroundColor = '#666'
     i.style.boxShadow = null
   }
   init();
