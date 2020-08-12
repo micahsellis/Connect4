@@ -49,13 +49,6 @@ body {
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
 }
-#grid > div:hover,
-#grid > div:focus,
-#grid > div:active {
-  box-shadow: 0 0 50px 20px rgba(255, 0, 91, 0.9), inset 0 0 30px 5px #fff,
-    0 0 10px #fff;
-  background-color: rgba(255, 0, 91, 1);
-}
 .btn{
     display: flex;
     justify-items: center;

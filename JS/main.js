@@ -5,11 +5,13 @@ const PLAYER = {
   p1Glow: '0 0 10px 5px rgba(255,0,115,0.8)',
   p1TxtShd:
     '1px 1px 2px black, 0 0 20px rgba(92, 255, 230, 0.6), 0 0 20px rgba(92, 255, 240, 0.5), 0 0 20px rgba(92, 255, 255, 0.7)',
+  p1Hover: "#grid > div:hover,#grid > div:focus,#grid > div:active {box-shadow: 0 0 50px 20px rgba(255, 0, 91, 0.9), inset 0 0 30px 5px #fff,0 0 10px #fff;background-color: rgba(255, 0, 91, 1);}",
   p2: -1,
   p2Color: 'rgba(92,225,230,1)',
   p2Glow: '0 0 10px 5px rgba(92,255,230,0.8)',
   p2TxtShd:
     '1px 1px 2px black, 0 0 20px rgba(255, 0, 115, 1), 0 0 20px rgba(255, 0, 100, 1), 0 0 20px rgba(255, 0, 90, 1)',
+  p2Hover: "#grid > div:hover,#grid > div:focus,#grid > div:active {box-shadow: 0 0 50px 20px rgba(92, 255, 230, 0.9), inset 0 0 30px 5px #fff,0 0 10px #fff;background-color: rgba(92, 255, 230, 1);}"
 };
 
 /*----- app's state (variables) -----*/
@@ -24,12 +26,14 @@ const allColumnEls = document.querySelectorAll(
 );
 const gameStateEl = document.getElementById('gameState');
 const playerEl = document.getElementById('player-turn');
+const styleCSS = document.createElement('style');
 
 /*----- event listeners -----*/
 document.getElementById('resetbtn').addEventListener('click', eraseBoard);
 
 /*----- functions -----*/
 function init() {
+  // Initialize the game board, winner, turn, & add event listeners to all div's on game board
   board = {
     c0: [null, null, null, null, null, null],
     c1: [null, null, null, null, null, null],
@@ -49,9 +53,11 @@ function init() {
 }
 
 function handleClick(evt) {
+  // get target id and class name
   const playerRow = parseInt(evt.target.id);
   const playerColumn = evt.target.className;
   if (!board[playerColumn].includes(null)) return;
+  // find the index of the first null value and splice the array
   const idx = board[playerColumn].findIndex((e) => e === null);
   board[playerColumn].splice(idx, 1, turn);
   if (turn === -1) {
@@ -66,44 +72,51 @@ function handleClick(evt) {
 }
 
 function player2Go(playerColumn, idx) {
+  // convert int back to string and locate the div id that needs to change and apply changes
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
   let clicked = document.getElementById(id);
   clicked.style.backgroundColor = PLAYER.p2Color;
   clicked.style.boxShadow = PLAYER.p2Glow;
   clicked.removeEventListener('click', handleClick);
+  if (styleCSS.styleSheet) {
+    styleCSS.styleSheet.cssText = css;
+  } else {
+    styleCSS.appendChild(document.createTextNode(PLAYER.p2Hover));
+  }
 }
 
 function player1Go(playerColumn, idx) {
+  // same as player2Go but for player 1
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
   let clicked = document.getElementById(id);
   clicked.style.backgroundColor = PLAYER.p1Color;
   clicked.style.boxShadow = PLAYER.p1Glow;
   clicked.removeEventListener('click', handleClick);
+  styleCSS.appendChild(document.createTextNode(PLAYER.p1Hover));
 }
 
 function isGameOver() {
   // convert board object's key values to arrays
   let boardArr = Object.values(board);
-  console.log(boardArr);
   // check columns
-  for (let col = 0; col < 8; col++) {
+  for (let col = 0; col < 7; col++) {
     for (let row = 0; row < 4; row++) {
       if (
-        boardArr[col][row] === 1 &&
-        boardArr[col][row + 1] === 1 &&
-        boardArr[col][row + 2] === 1 &&
-        boardArr[col][row + 3] === 1
+        boardArr[col][row] == 1 &&
+        boardArr[col][row + 1] == 1 &&
+        boardArr[col][row + 2] == 1 &&
+        boardArr[col][row + 3] == 1
       ) {
         winner = boardArr[col][row];
         gameIsOver();
         return winner;
       } else if (
-        boardArr[col][row] === -1 &&
-        boardArr[col][row + 1] === -1 &&
-        boardArr[col][row + 2] === -1 &&
-        boardArr[col][row + 3] === -1
+        boardArr[col][row] == -1 &&
+        boardArr[col][row + 1] == -1 &&
+        boardArr[col][row + 2] == -1 &&
+        boardArr[col][row + 3] == -1
       ) {
         winner = boardArr[col][row];
         gameIsOver();
@@ -187,6 +200,7 @@ function isGameOver() {
 }
 
 function render(turn) {
+  // render message on screen and switch player image
   if (winner === null) {
     if (turn === 1) {
       playerEl.src = 'imgs/Player1.png';
@@ -213,11 +227,13 @@ function render(turn) {
 }
 
 function gameIsOver() {
+  // remove event listeners from all divs on game board
   for (i of allColumnEls) {
     i.removeEventListener('click', handleClick);
   }
 }
 function eraseBoard() {
+  //change the divs background color back to default and remove glow
   for (i of allColumnEls) {
     i.style.backgroundColor = '#666';
     i.style.boxShadow = null;
