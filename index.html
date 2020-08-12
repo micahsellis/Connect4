@@ -6,11 +6,13 @@
     <title>Connect4</title>
     <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen"/>
     <script defer src="JS/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header">
-        <img src="imgs/CONNECTTT.png" alt="connect4">
-        <h2 id="gameState">GAME OVER</h2>
+        <img id='title' src="imgs/CONNECTTT.png" alt="connect4">
+        <h3 id="gameState">GAME OVER</h3>
+        <div id="space"></div>
         <img id="player-turn" src="imgs/Player1.png" alt="player">
     </div>
     <div id="grid">
@@ -57,10 +59,12 @@
         <div class="c5" id="0,5"></div>
         <div class="c6" id="0,6"></div>
     </div>
-    <div lcass="btn"><div class="button" id="resetbtn"><span>Reset Game</span><svg>
+    <div class="btn">
+        <div class="button" id="resetbtn"><span>Reset Game</span><svg>
 		<polyline class="o1" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
 		<polyline class="o2" points="0 0, 150 0, 150 55, 0 55, 0 0"></polyline>
-    </svg></div></div>
+    </svg></div>
+</div>
     <img id="coded" src="imgs/micahCorner.png" alt="MicahEllis">
 </body>
 </html>

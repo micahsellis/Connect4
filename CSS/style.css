@@ -1,4 +1,5 @@
 * {
+font-family: 'Audiowide', cursive;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,29 +14,33 @@ body {
   display: flex;
   justify-content: space-between;
   align-content: center;
-  margin: 0 100px 0 100px;
+  margin: 0 50px 0 0px;
 }
-#header h2 {
+#header h3 {
   color: rgba(255, 0, 115, 1);
   align-self: center;
   text-shadow: 1px 1px 2px black, 0 0 20px rgba(92, 255, 230, 0.6), 0 0 20px rgba(92, 255, 240, 0.5), 0 0 20px rgba(92, 255, 255, 0.7);
 }
+#title {
+  max-width: 200px;
+  max-height: 100px;
+}
+
 #grid {
   display: grid;
-  grid-template-columns: repeat(7, 100px);
-  grid-auto-rows: minmax(100px, auto);
-  /* doesn't need the rows if there is something in the divs */
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   background-color: #000;
   justify-content: center;
   grid-gap: 0.25em;
-  margin: 50px;
-  width: 750px;
+  margin: 10px;
+  z-index: 1;
 }
 #grid > div {
   background: #666;
   display: inline-block;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   border-color: #aaa;
   border-style: inset;
@@ -51,21 +56,23 @@ body {
 }
 .btn{
     display: flex;
-    justify-items: center;
-    background-color: white;
+    justify-content: center;
+    align-content: center;
+    background-color: black;
+    margin: auto;
 }
 .button {
   display: flex;
-  width: 150px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 12px;
 }
 .button svg {
   height: 55px;
   width: 150px;
   fill: none;
-  stroke-width: 5;
+  stroke-width: 4;
 }
 .button svg .o1 {
   stroke: rgba(255, 0, 91, 0.7);
@@ -94,7 +101,6 @@ body {
     position: fixed;
     bottom: 0;
     right: 0;
-    height: 75px;
-    width: 150px;
-    z-index: -1;
+    height: 50px;
+    width: 100px;
 }
