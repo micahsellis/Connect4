@@ -43,7 +43,6 @@ function init() {
     c6: [null, null, null, null, null, null],
   };
   turn = 1;
-  winner = null;
   gameStateEl.textContent = 'MAKE YOUR MOVE!';
   render();
 }
@@ -60,7 +59,7 @@ function handleClick(evt) {
   if (turn === 1) {
     player1Go(playerColumn, idx);
   }
-  winner = isGameOver();
+  isGameOver();
   turn *= -1;
   render(turn);
 }
@@ -82,63 +81,91 @@ function player1Go(playerColumn, idx) {
   clicked.style.boxShadow = PLAYER.p1Glow;
   clicked.removeEventListener('click', handleClick);
 }
-
+/*
+  board = {
+    c0: [null, null, null, null, null, null],
+    c1: [null, null, null, null, null, null],
+    c2: [null, null, null, null, null, null],
+    c3: [null, null, null, null, null, null],
+    c4: [null, null, null, null, null, null],
+    c5: [null, null, null, null, null, null],
+    c6: [null, null, null, null, null, null],
+  };
+  */ 
 function isGameOver() {
-  Object.keys(board).forEach(([key]) => {
-    for (i = 0; i < 5; i++) {
-      if (board[key][i] === -1) {
-        console.log(board[key][i])
+  // for (const [key, value] of Object.entries(board)) {
+  Object.entries(board).forEach(([key, value]) => {
+    for (i = 0; i < 3; i++) {
+      if (
+        board[key][i] === 1 &&
+        board[key][i + 1] === 1 &&
+        board[key][i + 2] === 1 &&
+        board[key][i + 3] === 1
+      ) {
+        console.log('winner is 1');
+        winner = board[key][i];
+        console.log(winner)
+        return winner
+      } else if (
+        board[key][i] === -1 &&
+        board[key][i + 1] === -1 &&
+        board[key][i + 2] === -1 &&
+        board[key][i + 3] === -1
+      ) {
+        console.log('winner is -1');
+        return board[key][i];
+      } else return null
     }
-  }
-})
+  })
+};
 
-  // if (board.c0[0] === board.c0[1] )
-  //check Verticle
-//   for (i = 0; i < 3; i++) {
-//     Object.keys()
-//   }
-// }
-// function chkWinner(board) {
-//   // Check down
-//   for (r = 0; r < 3; r++)
-//     Object.entries(board).forEach(([key, value]) => {
-//       if chkLine(key )
-//     })
-//     for (c = 0; c < 7; c++)
-//       if (chkLine(board., bd[r + 1][c], bd[r + 2][c], bd[r + 3][c]))
-//         return bd[r][c];
-// Object.entries(animals).forEach(([key, value]) => {
-//     console.log(`${key}: ${value}`)
-// });
 
-// Object.entries & Object.keys
-//   // Check right
-//   for (r = 0; r < 6; r++)
-//     for (c = 0; c < 4; c++)
-//       if (chkLine(bd[r][c], bd[r][c + 1], bd[r][c + 2], bd[r][c + 3]))
-//         return bd[r][c];
+                        // if (board.c0[0] === board.c0[1] )
+                        //check Verticle
+                        //   for (i = 0; i < 3; i++) {
+                        //     Object.keys()
+                        //   }
+                        // }
+                        // function chkWinner(board) {
+                        //   // Check down
+                        //   for (r = 0; r < 3; r++)
+                        //     Object.entries(board).forEach(([key, value]) => {
+                        //       if chkLine(key )
+                        //     })
+                        //     for (c = 0; c < 7; c++)
+                        //       if (chkLine(board., bd[r + 1][c], bd[r + 2][c], bd[r + 3][c]))
+                        //         return bd[r][c];
+                        // Object.entries(animals).forEach(([key, value]) => {
+                        //     console.log(`${key}: ${value}`)
+                        // });
 
-//   // Check down-right
-//   for (r = 0; r < 3; r++)
-//     for (c = 0; c < 4; c++)
-//       if (
-//         chkLine(bd[r][c], bd[r + 1][c + 1], bd[r + 2][c + 2], bd[r + 3][c + 3])
-//       )
-//         return bd[r][c];
+                        // Object.entries & Object.keys
+                        //   // Check right
+                        //   for (r = 0; r < 6; r++)
+                        //     for (c = 0; c < 4; c++)
+                        //       if (chkLine(bd[r][c], bd[r][c + 1], bd[r][c + 2], bd[r][c + 3]))
+                        //         return bd[r][c];
 
-//   // Check down-left
-//   for (r = 3; r < 6; r++)
-//     for (c = 0; c < 4; c++)
-//       if (
-//         chkLine(bd[r][c], bd[r - 1][c + 1], bd[r - 2][c + 2], bd[r - 3][c + 3])
-//       )
-//         return bd[r][c];
+                        //   // Check down-right
+                        //   for (r = 0; r < 3; r++)
+                        //     for (c = 0; c < 4; c++)
+                        //       if (
+                        //         chkLine(bd[r][c], bd[r + 1][c + 1], bd[r + 2][c + 2], bd[r + 3][c + 3])
+                        //       )
+                        //         return bd[r][c];
 
-//   return 0;
-// }
-  // console.log(board);
-  return null;
-}
+                        //   // Check down-left
+                        //   for (r = 3; r < 6; r++)
+                        //     for (c = 0; c < 4; c++)
+                        //       if (
+                        //         chkLine(bd[r][c], bd[r - 1][c + 1], bd[r - 2][c + 2], bd[r - 3][c + 3])
+                        //       )
+                        //         return bd[r][c];
+
+                        //   return 0;
+                        // }
+                        // console.log(board);
+                      
 
 function render(turn) {
   if (winner === null) {
