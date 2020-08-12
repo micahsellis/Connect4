@@ -12,7 +12,7 @@ body {
 #header {
   display: flex;
   justify-content: space-between;
-  align-content: ;
+  align-content: center;
   margin: 0 100px 0 100px;
 }
 #header h2 {
@@ -76,7 +76,7 @@ body {
 }
 .button svg .o1 {
   stroke: rgba(255, 0, 91, 0.7);
-  fill: rgba(255, 0, 91, 1));
+  fill: rgba(255, 0, 91, 1);
   transition: all 1s ease-in-out;
 }
 .button svg .o2 {

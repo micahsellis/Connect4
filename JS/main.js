@@ -42,6 +42,7 @@ function init() {
   for (i of allColumnEls) {
     i.addEventListener('click', handleClick);
   }
+  winner = null;
   turn = 1;
   gameStateEl.textContent = 'MAKE YOUR MOVE!';
   render();
@@ -83,49 +84,50 @@ function player1Go(playerColumn, idx) {
 }
 
 function isGameOver() {
-  // check columns
-  Object.entries(board).forEach(([key, value]) => {
-    for (row = 0; row < 4; row++) {
-      if (
-        board[key][row] === 1 &&
-        board[key][row + 1] === 1 &&
-        board[key][row + 2] === 1 &&
-        board[key][row + 3] === 1
-      ) {
-        winner = board[key][i];
-        gameIsOver();
-        return winner;
-      } else if (
-        board[key][row] === -1 &&
-        board[key][row + 1] === -1 &&
-        board[key][row + 2] === -1 &&
-        board[key][row + 3] === -1
-      ) {
-        winner = board[key][i];
-        gameIsOver();
-        return winner;
-      }
-    }
-  });
-  // convert board object's values to arrays
+  // convert board object's key values to arrays
   let boardArr = Object.values(board);
-  // check rows
-  for (col = 0; col < 4; col++) {
-    for (row = 0; row < 6; row++) {
+  console.log(boardArr);
+  // check columns
+  for (let col = 0; col < 8; col++) {
+    for (let row = 0; row < 4; row++) {
       if (
         boardArr[col][row] === 1 &&
-        boardArr[col + 1][row] === 1 &&
-        boardArr[col + 2][row] === 1 &&
-        boardArr[col + 3][row] === 1
+        boardArr[col][row + 1] === 1 &&
+        boardArr[col][row + 2] === 1 &&
+        boardArr[col][row + 3] === 1
       ) {
         winner = boardArr[col][row];
         gameIsOver();
         return winner;
       } else if (
         boardArr[col][row] === -1 &&
-        boardArr[col + 1][row] === -1 &&
-        boardArr[col + 2][row] === -1 &&
-        boardArr[col + 3][row] === -1
+        boardArr[col][row + 1] === -1 &&
+        boardArr[col][row + 2] === -1 &&
+        boardArr[col][row + 3] === -1
+      ) {
+        winner = boardArr[col][row];
+        gameIsOver();
+        return winner;
+      }
+    }
+  }
+  // check rows
+  for (let col = 0; col < 4; col++) {
+    for (let row = 0; row < 6; row++) {
+      if (
+        boardArr[col][row] == 1 &&
+        boardArr[col + 1][row] == 1 &&
+        boardArr[col + 2][row] == 1 &&
+        boardArr[col + 3][row] == 1
+      ) {
+        winner = boardArr[col][row];
+        gameIsOver();
+        return winner;
+      } else if (
+        boardArr[col][row] == -1 &&
+        boardArr[col + 1][row] == -1 &&
+        boardArr[col + 2][row] == -1 &&
+        boardArr[col + 3][row] == -1
       ) {
         winner = boardArr[col][row];
         gameIsOver();
@@ -134,8 +136,8 @@ function isGameOver() {
     }
   }
   // check diagonal right
-  for (col = 0; col < 4; col++) {
-    for (row = 0; row < 3; row++) {
+  for (let col = 0; col < 4; col++) {
+    for (let row = 0; row < 3; row++) {
       if (
         boardArr[col][row] === 1 &&
         boardArr[col + 1][row + 1] === 1 &&
@@ -158,8 +160,8 @@ function isGameOver() {
     }
   }
   // check diagonal left
-  for (col = 0; col < 4; col++) {
-    for (row = 3; row < 6; row++) {
+  for (let col = 0; col < 4; col++) {
+    for (let row = 3; row < 6; row++) {
       if (
         boardArr[col][row] === 1 &&
         boardArr[col + 1][row - 1] === 1 &&
@@ -217,8 +219,8 @@ function gameIsOver() {
 }
 function eraseBoard() {
   for (i of allColumnEls) {
-    i.style.backgroundColor = '#666'
-    i.style.boxShadow = null
+    i.style.backgroundColor = '#666';
+    i.style.boxShadow = null;
   }
   init();
 }
