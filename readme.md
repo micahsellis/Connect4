@@ -1,4 +1,4 @@
-![coded by Micah Ellis](https://i.imgur.com/IIlbpnq.gif =150x75)
+<img src=https://i.imgur.com/IIlbpnq.gif width="150px" height="75px">
 
 # CONNECT 4
 
