@@ -2,26 +2,26 @@
 
 # CONNECT 4
 
-	Connect 4 is a 2 player board game in which players choose a color and take turns dropping their colored discs into a vertical game board. The board typically consists of 7 columns and 6 rows, when the player's peices are dropped into the board they occupy the lowest available space within that column. The object of the game is to try and get 4 consecutive peices in any alignment: vertical, horizontal, or diagonal. Connect Four was origionally created by Howard Wexler and Ned Strongin and published by Milton Bradley / Hasbro in 1974. [Learn More Here](https://en.wikipedia.org/wiki/Connect_Four)
+Connect 4 is a 2 player board game in which players choose a color and take turns dropping their colored discs into a vertical game board. The board typically consists of 7 columns and 6 rows, when the player's peices are dropped into the board they occupy the lowest available space within that column. The object of the game is to try and get 4 consecutive peices in any alignment: vertical, horizontal, or diagonal. Connect Four was origionally created by Howard Wexler and Ned Strongin and published by Milton Bradley / Hasbro in 1974. [Learn More Here](https://en.wikipedia.org/wiki/Connect_Four)
 
 ## Screenshots:
 
-	Add screenshots here!
+Add screenshots here!
 
 ## Technologies Used:
 
-	The technologies used to impliment this version of the game are: **HTML, JavaScript, & CSS**
+The technologies used to impliment this version of the game are: **HTML, JavaScript, & CSS**
 
 ## Getting started:
 
-	This version of connect 4 is deployed via GitHub Pages. You can try out the game yourself by following this link:
+This version of connect 4 is deployed via GitHub Pages. You can try out the game yourself by following this link:
 	https://micahsellis.github.io/Connect4/
 
 ## Next Steps:
 
-	1) Create AI to play against a single player.
-	2) Create a mobile friendly version of the game.
-	3) Add animation effects to the peices falling onto the board.
+1) Create AI to play against a single player.
+2) Create a mobile friendly version of the game.
+3) Add animation effects to the peices falling onto the board.
 
 ### Wireframe:
 
