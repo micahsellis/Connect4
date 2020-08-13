@@ -1,4 +1,4 @@
-![coded by Micah Ellis](https://i.imgur.com/IIlbpnq.gif =150x)
+![coded by Micah Ellis](https://i.imgur.com/IIlbpnq.gif =150x75)
 
 # CONNECT 4
 
