@@ -75,8 +75,8 @@ body {
   stroke-width: 4;
 }
 .button svg .o1 {
-  stroke: rgba(255, 0, 91, 0.7);
-  fill: rgba(255, 0, 91, 1);
+  stroke: rgba(255, 0, 115, 0.7);
+  fill: rgba(255, 0, 115, 1);
   transition: all 1s ease-in-out;
 }
 .button svg .o2 {
