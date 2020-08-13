@@ -1,4 +1,4 @@
-![coded by Micah Ellis](https://i.imgur.com/IIlbpnq.gif)
+![coded by Micah Ellis](https://i.imgur.com/IIlbpnq.gif = 150x)
 
 # CONNECT 4
 
@@ -23,11 +23,11 @@ This version of connect 4 is deployed via GitHub Pages. You can try out the game
 * Create a mobile friendly version of the game.
 * Add animation effects to the peices falling onto the board.
 
-### Wireframe:
+## Wireframe:
 
 ![wireframe](https://i.imgur.com/9MbRlZb.jpg?1)
 
-### Pseudocode:
+## Pseudocode:
 
 ```
 1) Define required constants:
@@ -77,5 +77,6 @@ This version of connect 4 is deployed via GitHub Pages. You can try out the game
 		
 
 6) Handle a player clicking the replay button:
-	6.1) Do steps 4.1 (initialize the state variables) and 4.2 (render).
+	6.1) Revert all color elements on the page back to the origional state.
+	6.2) Do steps 4.1 (initialize the state variables) and 4.2 (render).
 ```
