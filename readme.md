@@ -15,8 +15,8 @@ The technologies used to impliment this version of the game are: **HTML, JavaScr
 
 ## Getting started:
 
-This version of connect 4 is deployed via GitHub Pages. You can try out the game yourself by following this link:
-https://micahsellis.github.io/Connect4/
+This version of connect 4 is deployed via GitHub Pages. You can try out the game yourself by following this link:<br>
+https://micahsellis.github.io/Connect4/<br>
 The recommended browser to play this game is Chrome.
 
 ## Next Steps:
