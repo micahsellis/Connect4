@@ -6,7 +6,7 @@ Connect 4 is a 2 player board game in which players choose a color and take turn
 
 ## Screenshots:
 
-![Screenshot Play](https://i.imgur.com/NLZSuRg.png)
+![Screenshot Play](https://i.imgur.com/NVdpraT.png)
 ![Scrrenshot Win](https://i.imgur.com/0DEfpre.png)
 
 ## Technologies Used:
