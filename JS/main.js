@@ -19,18 +19,14 @@ let winner;
 
 /*----- cached element references -----*/
 const playerTurnEl = document.getElementById('playerTurn');
-const allColumnEls = document.querySelectorAll(
-  '.c0, .c1, .c2, .c3, .c4, .c5, .c6'
-);
+const allColumnEls = document.querySelectorAll('.c0, .c1, .c2, .c3, .c4, .c5, .c6');
 const gameStateEl = document.getElementById('gameState');
 const playerEl = document.getElementById('player-turn');
-const styleCSS = document.createElement('style');
-
-/*----- event listeners -----*/
-document.getElementById('resetbtn').addEventListener('click', eraseBoard);
+const p1WinEl = document.getElementById('p1Win');
+const p2WinEl = document.getElementById('p2Win');
 
 /*----- functions -----*/
-function init() {
+const init = () => {
   // Initialize the game board, winner, turn, & add event listeners to all div's on game board
   board = {
     c0: [null, null, null, null, null, null],
@@ -50,7 +46,7 @@ function init() {
   render();
 }
 
-function handleClick(evt) {
+const handleClick = (evt) => {
   // get target id and class name
   const playerRow = parseInt(evt.target.id);
   const playerColumn = evt.target.className;
@@ -69,7 +65,7 @@ function handleClick(evt) {
   render(turn);
 }
 
-function player2Go(playerColumn, idx) {
+const player2Go = (playerColumn, idx) => {
   // convert int back to string and locate the div id that needs to change colors and apply changes
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
@@ -79,8 +75,7 @@ function player2Go(playerColumn, idx) {
   clicked.removeEventListener('click', handleClick);
 }
 
-function player1Go(playerColumn, idx) {
-  // same as player2Go but for player 1
+const player1Go = (playerColumn, idx) => {
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
   let clicked = document.getElementById(id);
@@ -89,10 +84,15 @@ function player1Go(playerColumn, idx) {
   clicked.removeEventListener('click', handleClick);
 }
 
-function isGameOver() {
-  // convert board object's key values to arrays
+const isGameOver = () => {
   let boardArr = Object.values(board);
-  // check columns
+  checkColumns(boardArr);
+  checkRows(boardArr);
+  checkDiagRight(boardArr);
+  checkDiagLeft(boardArr);
+}
+
+const checkColumns = (boardArr) => {
   for (let col = 0; col < 7; col++) {
     for (let row = 0; row < 4; row++) {
       if (
@@ -116,7 +116,9 @@ function isGameOver() {
       }
     }
   }
-  // check rows
+}
+
+const checkRows = (boardArr) => {
   for (let col = 0; col < 4; col++) {
     for (let row = 0; row < 6; row++) {
       if (
@@ -140,7 +142,9 @@ function isGameOver() {
       }
     }
   }
-  // check diagonal right
+}
+
+const checkDiagRight = (boardArr) => {
   for (let col = 0; col < 4; col++) {
     for (let row = 0; row < 3; row++) {
       if (
@@ -164,7 +168,9 @@ function isGameOver() {
       }
     }
   }
-  // check diagonal left
+}
+
+const checkDiagLeft = (boardArr) => {
   for (let col = 0; col < 4; col++) {
     for (let row = 3; row < 6; row++) {
       if (
@@ -188,49 +194,67 @@ function isGameOver() {
       }
     }
   }
-  return null;
 }
 
-function render(turn) {
-  // render message on screen and switch player image
-  if (winner === null) {
-    if (turn === 1) {
-      playerEl.src = 'imgs/Player1.png';
+const render = (turn) => {
+  switch (winner) {
+    case 1:
+      gameStateEl.textContent = '';
       gameStateEl.style.color = PLAYER.p1Color;
       gameStateEl.style.textShadow = PLAYER.p1TxtShd;
-    } else if (turn === -1) {
-      playerEl.src = 'imgs/Player2.png';
+      playerEl.src = 'imgs/OVER.png';
+      document.getElementById('popup').zIndex = '1';
+      document.querySelector('.wrapper').zIndex = '1';
+      p1WinEl.style.zIndex = '2';
+      break;
+    case -1:
+      gameStateEl.textContent = '';
       gameStateEl.style.color = PLAYER.p2Color;
       gameStateEl.style.textShadow = PLAYER.p2TxtShd;
-    }
-  } else if (winner === 'T') {
-    gameStateEl.textContent = "IT'S A TIE!";
-    gameStateEl.style.color = 'black';
-    gameStateEl.style.textShadow = '0 0 20px white, 0 0 20px white';
-  } else if (winner === 1) {
-    gameStateEl.textContent = 'PLAYER 1 WINS!';
-    gameStateEl.style.color = PLAYER.p1Color;
-    gameStateEl.style.textShadow = PLAYER.p1TxtShd;
-  } else if (winner === -1) {
-    gameStateEl.textContent = 'PLAYER 2 WINS!';
-    gameStateEl.style.color = PLAYER.p2Color;
-    gameStateEl.style.textShadow = PLAYER.p2TxtShd;
+      playerEl.src = 'imgs/OVER.png';
+      document.getElementById('popup').zIndex = '1';
+      p2WinEl.style.zIndex = '2';
+      break;
+    default:
+      switch (turn) {
+        case 1:
+          playerEl.src = 'imgs/Player1.png';
+          gameStateEl.style.color = PLAYER.p1Color;
+          gameStateEl.style.textShadow = PLAYER.p1TxtShd;
+          break;
+        case -1:
+          playerEl.src = 'imgs/Player2.png';
+          gameStateEl.style.color = PLAYER.p2Color;
+          gameStateEl.style.textShadow = PLAYER.p2TxtShd;
+          break;
+        default:
+          break;
+      }
   }
 }
 
-function gameIsOver() {
+const gameIsOver = () => {
   // remove event listeners from all divs on game board
   for (i of allColumnEls) {
     i.removeEventListener('click', handleClick);
   }
 }
-function eraseBoard() {
+
+const eraseBoard = () => {
   //change the divs background color back to default and remove glow
   for (i of allColumnEls) {
     i.style.backgroundColor = '#666';
     i.style.boxShadow = null;
   }
+  p1WinEl.style.zIndex = '0';
+  p2WinEl.style.zIndex = '0';
+  playerEl.src = 'imgs/Player1.png'
   init();
 }
 
-init();
+/*----- event listeners -----*/
+// moved to bottom due to ES6 not being able to add event listener before function is defined
+document.getElementById('resetbtn').addEventListener('click', eraseBoard);
+
+
+  init();
