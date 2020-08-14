@@ -1,0 +1,123 @@
+* {
+  font-family: 'Audiowide', cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  background-color: black;
+  color: white;
+  justify-content: center;
+}
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0 50px 0 0px;
+}
+#header h3 {
+  color: rgba(255, 0, 115, 1);
+  align-self: center;
+  text-shadow: 1px 1px 2px black, 0 0 20px rgba(92, 255, 230, 0.6),
+    0 0 20px rgba(92, 255, 240, 0.5), 0 0 20px rgba(92, 255, 255, 0.7);
+}
+#title {
+  max-width: 200px;
+  max-height: 100px;
+}
+#grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background-color: #000;
+  justify-content: center;
+  grid-gap: 0.25em;
+  margin: 10px;
+  z-index: 1;
+}
+#grid > div {
+  background: #666;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border-color: #aaa;
+  border-style: groove;
+  border-radius: 1em;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 10px rgba(194, 26, 67, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+#popup {
+  position: absolute;
+  left: 50%;
+}
+#popup .wrapper {
+  position: relative;
+  left: -50%;
+  width: 420px;
+  height: 420px;
+  top: 150px;
+}
+#p1Win {
+  position: absolute;
+}
+#p2Win {
+  position: absolute;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: black;
+  margin: auto;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+}
+.button svg {
+  height: 55px;
+  width: 150px;
+  fill: none;
+  stroke-width: 4;
+}
+.button svg .o1 {
+  stroke: rgba(255, 0, 115, 0.7);
+  fill: rgba(255, 0, 115, 1);
+  transition: all 1s ease-in-out;
+}
+.button svg .o2 {
+  stroke: #5ce1e6;
+  stroke-dasharray: 20 420;
+  stroke-dashoffset: 20;
+  transition: all 1s ease-in-out;
+}
+.button span {
+  position: absolute;
+  margin: auto 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.button:hover .o1 {
+  fill: rgba(255, 0, 91, 0.3);
+}
+.button:hover .o2 {
+  stroke-dashoffset: -420;
+}
+#coded {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 50px;
+  width: 100px;
+}

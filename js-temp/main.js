@@ -257,19 +257,19 @@ const eraseBoard = () => {
 
 const playP1 = () => {
   var audio = document.createElement('audio');
-  audio.src = '/sounds/p1.wav';
+  audio.src = '/Sounds/p1.wav';
   audio.play();
-};
+}
 
 const playP2 = () => {
   var audio = document.createElement('audio');
-  audio.src = '/sounds/p2.wav';
+  audio.src = '/Sounds/p2.wav';
   audio.play();
-};
+}
 
 const playWin = () => {
   var audio = document.createElement('audio');
-  audio.src = '/sounds/win.mp3';
+  audio.src = '/Sounds/win.mp3';
   audio.play();
 };
 
