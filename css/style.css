@@ -71,18 +71,18 @@ body {
   position: absolute;
 }
 .btn {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  background-color: black;
-  margin: auto;
+  position: absolute;
 }
 .button {
   display: flex;
+  position: relative;
+  left: 40%;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 12px;
+  height: 55px;
+  width: 150px;
 }
 .button svg {
   height: 55px;
