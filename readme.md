@@ -2,7 +2,7 @@
 
 # CONNECT 4
 
-Connect 4 is a 2 player board game in which players choose a color and take turns dropping their colored discs into a vertical game board. The board typically consists of 7 columns and 6 rows, when the player's pieces are dropped into the board they occupy the lowest available space within that column. The object of the game is to try and get 4 consecutive pieces in any alignment: vertical, horizontal, or diagonal. Connect Four was originally created by Howard Wexler and Ned Strongin and published by Milton Bradley / Hasbro in 1974. [Click here to learn more!](https://en.wikipedia.org/wiki/Connect_Four)
+Connect 4 is a 2 player board game in which players choose a color and take turns dropping their colored discs into a vertical game board. The board typically consists of 7 columns and 6 rows, when the player's pieces are dropped into the board they occupy the lowest available space within that column. The object of the game is to try and get 4 consecutive pieces in any alignment: vertical, horizontal, or diagonal. This version of Connect Four is inspired by a retro futuristic Cyberpunk art design. Connect Four was originally created by Howard Wexler and Ned Strongin and published by Milton Bradley / Hasbro in 1974. [Click here to learn more!](https://en.wikipedia.org/wiki/Connect_Four)
 
 ## Screenshots:
 
