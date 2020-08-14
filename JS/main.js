@@ -19,7 +19,9 @@ let winner;
 
 /*----- cached element references -----*/
 const playerTurnEl = document.getElementById('playerTurn');
-const allColumnEls = document.querySelectorAll('.c0, .c1, .c2, .c3, .c4, .c5, .c6');
+const allColumnEls = document.querySelectorAll(
+  '.c0, .c1, .c2, .c3, .c4, .c5, .c6'
+);
 const gameStateEl = document.getElementById('gameState');
 const playerEl = document.getElementById('player-turn');
 const p1WinEl = document.getElementById('p1Win');
@@ -44,7 +46,7 @@ const init = () => {
   turn = 1;
   gameStateEl.textContent = 'MAKE YOUR MOVE!';
   render();
-}
+};
 
 const handleClick = (evt) => {
   // get target id and class name
@@ -63,26 +65,28 @@ const handleClick = (evt) => {
   isGameOver();
   turn *= -1;
   render(turn);
-}
+};
 
 const player2Go = (playerColumn, idx) => {
   // convert int back to string and locate the div id that needs to change colors and apply changes
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
   let clicked = document.getElementById(id);
+  playP1();
   clicked.style.backgroundColor = PLAYER.p2Color;
   clicked.style.boxShadow = PLAYER.p2Glow;
   clicked.removeEventListener('click', handleClick);
-}
+};
 
 const player1Go = (playerColumn, idx) => {
   let columnNum = playerColumn.substr(1);
   let id = `${idx},${columnNum}`;
   let clicked = document.getElementById(id);
+  playP2();
   clicked.style.backgroundColor = PLAYER.p1Color;
   clicked.style.boxShadow = PLAYER.p1Glow;
   clicked.removeEventListener('click', handleClick);
-}
+};
 
 const isGameOver = () => {
   let boardArr = Object.values(board);
@@ -90,7 +94,7 @@ const isGameOver = () => {
   checkRows(boardArr);
   checkDiagRight(boardArr);
   checkDiagLeft(boardArr);
-}
+};
 
 const checkColumns = (boardArr) => {
   for (let col = 0; col < 7; col++) {
@@ -116,7 +120,7 @@ const checkColumns = (boardArr) => {
       }
     }
   }
-}
+};
 
 const checkRows = (boardArr) => {
   for (let col = 0; col < 4; col++) {
@@ -142,7 +146,7 @@ const checkRows = (boardArr) => {
       }
     }
   }
-}
+};
 
 const checkDiagRight = (boardArr) => {
   for (let col = 0; col < 4; col++) {
@@ -168,7 +172,7 @@ const checkDiagRight = (boardArr) => {
       }
     }
   }
-}
+};
 
 const checkDiagLeft = (boardArr) => {
   for (let col = 0; col < 4; col++) {
@@ -194,25 +198,24 @@ const checkDiagLeft = (boardArr) => {
       }
     }
   }
-}
+};
 
 const render = (turn) => {
   switch (winner) {
     case 1:
+      setTimeout(playWin, 500);
       gameStateEl.textContent = '';
       gameStateEl.style.color = PLAYER.p1Color;
       gameStateEl.style.textShadow = PLAYER.p1TxtShd;
       playerEl.src = 'imgs/OVER.png';
-      document.getElementById('popup').zIndex = '1';
-      document.querySelector('.wrapper').zIndex = '1';
       p1WinEl.style.zIndex = '2';
       break;
     case -1:
+      setTimeout(playWin, 500);
       gameStateEl.textContent = '';
       gameStateEl.style.color = PLAYER.p2Color;
       gameStateEl.style.textShadow = PLAYER.p2TxtShd;
       playerEl.src = 'imgs/OVER.png';
-      document.getElementById('popup').zIndex = '1';
       p2WinEl.style.zIndex = '2';
       break;
     default:
@@ -231,14 +234,14 @@ const render = (turn) => {
           break;
       }
   }
-}
+};
 
 const gameIsOver = () => {
   // remove event listeners from all divs on game board
   for (i of allColumnEls) {
     i.removeEventListener('click', handleClick);
   }
-}
+};
 
 const eraseBoard = () => {
   //change the divs background color back to default and remove glow
@@ -248,13 +251,30 @@ const eraseBoard = () => {
   }
   p1WinEl.style.zIndex = '0';
   p2WinEl.style.zIndex = '0';
-  playerEl.src = 'imgs/Player1.png'
+  playerEl.src = 'imgs/Player1.png';
   init();
+};
+
+const playP1 = () => {
+  var audio = document.createElement('audio');
+  audio.src = '/Sounds/p1.wav';
+  audio.play();
 }
+
+const playP2 = () => {
+  var audio = document.createElement('audio');
+  audio.src = '/Sounds/p2.wav';
+  audio.play();
+}
+
+const playWin = () => {
+  var audio = document.createElement('audio');
+  audio.src = '/Sounds/win.mp3';
+  audio.play();
+};
 
 /*----- event listeners -----*/
 // moved to bottom due to ES6 not being able to add event listener before function is defined
 document.getElementById('resetbtn').addEventListener('click', eraseBoard);
 
-
-  init();
+init();

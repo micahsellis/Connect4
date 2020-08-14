@@ -1,5 +1,5 @@
 * {
-font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', cursive;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,7 +19,8 @@ body {
 #header h3 {
   color: rgba(255, 0, 115, 1);
   align-self: center;
-  text-shadow: 1px 1px 2px black, 0 0 20px rgba(92, 255, 230, 0.6), 0 0 20px rgba(92, 255, 240, 0.5), 0 0 20px rgba(92, 255, 255, 0.7);
+  text-shadow: 1px 1px 2px black, 0 0 20px rgba(92, 255, 230, 0.6),
+    0 0 20px rgba(92, 255, 240, 0.5), 0 0 20px rgba(92, 255, 255, 0.7);
 }
 #title {
   max-width: 200px;
@@ -54,33 +55,28 @@ body {
   transition-property: box-shadow;
 }
 #popup {
-  position: fixed;
+  position: absolute;
   left: 50%;
 }
 #popup .wrapper {
   position: relative;
   left: -50%;
-  background-color: black;
-  padding: 10px;
-  border: solid 2px #666;
-  border-radius: 10px;
   width: 420px;
   height: 420px;
   top: 150px;
-} 
+}
 #p1Win {
   position: absolute;
 }
 #p2Win {
   position: absolute;
-
 }
-.btn{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    background-color: black;
-    margin: auto;
+.btn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: black;
+  margin: auto;
 }
 .button {
   display: flex;
@@ -119,9 +115,9 @@ body {
   stroke-dashoffset: -420;
 }
 #coded {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: 50px;
-    width: 100px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 50px;
+  width: 100px;
 }
