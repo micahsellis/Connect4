@@ -274,7 +274,6 @@ const playWin = () => {
 };
 
 /*----- event listeners -----*/
-// moved to bottom due to ES6 not being able to add event listener before function is defined
 document.getElementById('resetbtn').addEventListener('click', eraseBoard);
 
 init();
